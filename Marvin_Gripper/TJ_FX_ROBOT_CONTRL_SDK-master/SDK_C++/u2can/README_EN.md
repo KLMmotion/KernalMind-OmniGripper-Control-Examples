@@ -2,14 +2,14 @@
 # KM Dual-Motor Gripper Control Module (C++ version)
 
 Version: 1.0  
-Type: Standalone Gripper Low-Level Control  
+Type: Standalone Gripper Control  
 Scope: Gripper control only (does NOT include robotic arm control)
 
 ---
 
 ## 1. Overview
 
-This module controls a dual-motor parallel gripper (DM4310 motors) via **USB-to-CANFD device** and **TJFX robotic arm pass-through**. The program uses **MIT mode** for controlling the gripper, which performs reciprocating motion following a sinusoidal trajectory.
+This module controls a dual-motor parallel gripper (DM4310 motors) via  **TJFX robotic arm pass-through**. The program uses **MIT mode** for controlling the gripper, which performs reciprocating motion following a sinusoidal trajectory.
 
 This module supports:
 - Motor initialization
