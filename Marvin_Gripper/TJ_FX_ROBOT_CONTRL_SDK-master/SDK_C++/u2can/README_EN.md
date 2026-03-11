@@ -24,7 +24,6 @@ This module supports:
 
 Supported OS:
 - Ubuntu 22.04
-- Windows 10 / 11
 
 C++ Compiler:
 - GCC 13 or higher
