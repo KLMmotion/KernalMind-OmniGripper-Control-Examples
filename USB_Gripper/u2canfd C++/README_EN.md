@@ -5,7 +5,7 @@ This program is used to control the OmniGripper gripper (DM4310 motor) through a
 
 ## Software Architecture
 - Written in C++ without ROS.
-
+- Test environment Ubuntu 22.04
 ## Installation and Build
 
 ### 1. Make sure libusb is installed on the system
