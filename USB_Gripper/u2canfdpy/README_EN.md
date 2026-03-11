@@ -31,12 +31,12 @@ mkdir -p ~/catkin_ws
 cd ~/catkin_ws
 ```
 
-Then place the **u2canfd** folder from Gitee into the `catkin_ws` directory.
+Then place the **u2canfdpy** folder from Gitee into the `catkin_ws` directory.
 
 As shown below:
 
 ```text
-~/catkin_ws/u2canfd
+~/catkin_ws/u2canfdpy
 ```
 
 ---
@@ -69,7 +69,7 @@ sudo udevadm trigger
 Then you need to find the `Serial_Number` of the **USB-to-CANFD device** by running the `dev_sn.py` file:
 
 ```shell
-cd ~/catkin_ws/u2canfd
+cd ~/catkin_ws/u2canfdpy
 python3 dev_sn.py
 ```
 
@@ -115,7 +115,7 @@ If you need to adjust the gripper opening/closing amplitude, speed, or control f
 Then open a terminal and run the `damiao.py` file:
 
 ```shell
-cd ~/catkin_ws/u2canfd
+cd ~/catkin_ws/u2canfdpy
 python3 damiao.py
 ```
 

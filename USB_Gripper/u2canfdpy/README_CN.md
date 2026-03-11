@@ -31,12 +31,12 @@ mkdir -p ~/catkin_ws
 cd ~/catkin_ws
 ```
 
-然后把 gitee 上的 **u2canfd** 文件夹放到 `catkin_ws` 目录下。
+然后把 gitee 上的 **u2canfdpy** 文件夹放到 `catkin_ws` 目录下。
 
 如下所示：
 
 ```text
-~/catkin_ws/u2canfd
+~/catkin_ws/u2canfdpy
 ```
 
 ---
@@ -69,7 +69,7 @@ sudo udevadm trigger
 然后需要通过运行 `dev_sn.py` 文件找到 **USB转CANFD设备** 的 `Serial_Number`：
 
 ```shell
-cd ~/catkin_ws/u2canfd
+cd ~/catkin_ws/u2canfdpy
 python3 dev_sn.py
 ```
 
@@ -115,7 +115,7 @@ kd = 0.2
 然后打开终端运行 `damiao.py` 文件：
 
 ```shell
-cd ~/catkin_ws/u2canfd
+cd ~/catkin_ws/u2canfdpy
 python3 damiao.py
 ```
 
