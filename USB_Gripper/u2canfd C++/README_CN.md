@@ -76,12 +76,12 @@ mkdir -p ~/catkin_ws
 cd ~/catkin_ws
 ```
 
-### 4. 将 `u2canfd` 文件夹放入 `catkin_ws` 目录下
+### 4. 将 `u2canfd C++` 文件夹放入 `catkin_ws` 目录下
 
-### 5. 进入 `u2canfd` 文件夹
+### 5. 进入 `u2canfd C++` 文件夹
 
 ```bash 
-cd ~/catkin_ws/u2canfd
+cd ~/catkin_ws/u2canfd C++
 ```
 
 ### 6. 创建构建目录、配置并编译程序
@@ -128,7 +128,7 @@ make
 
 1. 进入到工作空间的 `build` 目录：
    ```bash
-   cd ~/catkin_ws/u2canfd/build
+   cd ~/catkin_ws/u2canfd C++/build
    ```
 
 2. 运行 `dev_sn` 工具查找设备的**序列号**：
@@ -146,7 +146,7 @@ make
 
 3. 修改完成后，重新编译程序：
    ```bash
-   cd ~/catkin_ws/u2canfd/build
+   cd ~/catkin_ws/u2canfd C++/build
    make
    ```
 
@@ -154,7 +154,7 @@ make
 
 1. 编译完成后，运行电机控制程序：
    ```bash
-   cd ~/catkin_ws/u2canfd/build
+   cd ~/catkin_ws/u2canfd C++/build
    ./dm_main
    ```
    此时夹爪开始做往复运动，控制台会输出类似以下信息：

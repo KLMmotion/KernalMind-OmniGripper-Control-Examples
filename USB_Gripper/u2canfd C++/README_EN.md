@@ -5,7 +5,7 @@ This program is used to control the OmniGripper gripper (DM4310 motor) through a
 
 ## Software Architecture
 - Written in C++ without ROS.
-- Test environment Ubuntu 22.04
+
 ## Installation and Build
 
 ### 1. Make sure libusb is installed on the system
@@ -76,12 +76,12 @@ mkdir -p ~/catkin_ws
 cd ~/catkin_ws
 ```
 
-### 4. Place the `u2canfd` folder into the `catkin_ws` directory
+### 4. Place the `u2canfd C++` folder into the `catkin_ws` directory
 
-### 5. Enter the `u2canfd` folder
+### 5. Enter the `u2canfd C++` folder
 
 ```bash
-cd ~/catkin_ws/u2canfd
+cd ~/catkin_ws/u2canfd C++
 ```
 
 ### 6. Create the build directory, configure, and compile the program
@@ -131,7 +131,7 @@ To ensure that the program can access the USB device correctly, you need to set 
 1. Enter the `build` directory in the workspace:
 
    ```bash
-   cd ~/catkin_ws/u2canfd/build
+   cd ~/catkin_ws/u2canfd C++/build
    ```
 
 2. Run the `dev_sn` tool to find the **serial number** of the device:
@@ -151,7 +151,7 @@ To ensure that the program can access the USB device correctly, you need to set 
 3. After the modification is completed, recompile the program:
 
    ```bash
-   cd ~/catkin_ws/u2canfd/build
+   cd ~/catkin_ws/u2canfd C++/build
    make
    ```
 
@@ -160,7 +160,7 @@ To ensure that the program can access the USB device correctly, you need to set 
 1. After compilation is completed, run the motor control program:
 
    ```bash
-   cd ~/catkin_ws/u2canfd/build
+   cd ~/catkin_ws/u2canfd C++/build
    ./dm_main
    ```
 
