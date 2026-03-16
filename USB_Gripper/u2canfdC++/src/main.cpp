@@ -46,69 +46,79 @@ void print_rx_can_frame(const usb_rx_frame_t* frame) {
 }
 
 void process_data(std::shared_ptr<damiao::Motor_Control> con, usb_rx_frame_t* frame) {
-    // 用于将接收到的数据转换为浮动值的 Lambda 函数
     static auto uint_to_float = [](uint16_t x, float xmin, float xmax, uint8_t bits) -> float {
         float span = xmax - xmin;
         float data_norm = float(x) / ((1 << bits) - 1);
-        float data = data_norm * span + xmin;
-        return data;
+        return data_norm * span + xmin;
     };
 
-    uint32_t canID = frame->head.can_id;   // 获取 CAN ID（这里实际更像 mst_id）
-    uint8_t ch = frame->head.channel;      // 获取通信通道
+    uint32_t rx_id = frame->head.can_id;
+    uint8_t ch = frame->head.channel;
+    uint8_t cmd = frame->payload[2];
 
-    // 打印原始16进制CAN帧
+    // 打印原始帧
     print_rx_can_frame(frame);
 
-    // 根据回包自动识别当前连接的是哪台电机
-    // 兼容返回 can_id 或 mst_id 两种情况
+    // -----------------------------
+    // 1) 自动识别当前接入的是 0111 还是 0212
+    // 兼容 head.can_id / payload[0] 两种情况
+    // -----------------------------
     if (active_canid.load() == -1) {
-        if (canID == 0x01 || canID == 0x11) {
+        if (rx_id == 0x01 || rx_id == 0x11 || frame->payload[0] == 0x01 || frame->payload[0] == 0x11) {
             active_canid = 0x01;
             std::cerr << "[INFO] Detected motor: CAN ID = 0x01, MST ID = 0x11" << std::endl;
-        } else if (canID == 0x02 || canID == 0x12) {
+        } else if (rx_id == 0x02 || rx_id == 0x12 || frame->payload[0] == 0x02 || frame->payload[0] == 0x12) {
             active_canid = 0x02;
             std::cerr << "[INFO] Detected motor: CAN ID = 0x02, MST ID = 0x12" << std::endl;
         }
     }
 
-    // 判断是否收到读取或写入参数的数据
-    if (con->getRWSFlag() == true &&
-        con->getMotorsByChannel(ch)->find(canID) != con->getMotorsByChannel(ch)->end()) {
+    auto motors = con->getMotorsByChannel(ch);
 
-        if (frame->payload[2] == 0x33 || frame->payload[2] == 0x55 || frame->payload[2] == 0xAA) {
-            if (frame->payload[2] == 0x33 || frame->payload[2] == 0x55) {
-                con->receive_param(&frame->payload[0], ch);  // 处理读取或写入参数
-                con->getRWSFlag() = false;
+    // 优先按帧头 ID 找
+    auto it = motors->find(rx_id);
+
+    // 找不到时，退回按 payload[0] 再找一次
+    if (it == motors->end()) {
+        it = motors->find(frame->payload[0]);
+    }
+
+    if (it == motors->end()) {
+        return;
+    }
+
+    // -----------------------------
+    // 2) 参数读写应答帧：单独处理，绝不能落入状态解析
+    // -----------------------------
+    if (cmd == 0x33 || cmd == 0x55 || cmd == 0xAA) {
+        if (con->getRWSFlag() == true) {
+            if (cmd == 0x33 || cmd == 0x55) {
+                con->receive_param(&frame->payload[0], ch);
             }
             con->getRWSFlag() = false;
         }
-    } else {
-        // 处理电机返回的正常数据（位置、速度、力矩）
-        uint16_t q_uint = (uint16_t(frame->payload[1]) << 8) | frame->payload[2];
-        uint16_t dq_uint = (uint16_t(frame->payload[3]) << 4) | (frame->payload[4] >> 4);
-        uint16_t tau_uint = (uint16_t(frame->payload[4] & 0x0f) << 8) | frame->payload[5];
-
-        // 如果 CAN ID 不在电机控制列表中，返回
-        if (con->getMotorsByChannel(ch)->find(canID) == con->getMotorsByChannel(ch)->end()) {
-            return;
-        }
-
-        // 获取电机的参数和状态
-        auto m = con->getMotorsByChannel(ch)->find(canID);
-        auto limit_param_receive = m->second->get_limit_param();
-
-        // 将接收到的原始数据转换为实际值（位置、速度、力矩）
-        float receive_q = uint_to_float(q_uint, -limit_param_receive.Q_MAX, limit_param_receive.Q_MAX, 16);
-        float receive_dq = uint_to_float(dq_uint, -limit_param_receive.DQ_MAX, limit_param_receive.DQ_MAX, 12);
-        float receive_tau = uint_to_float(tau_uint, -limit_param_receive.TAU_MAX, limit_param_receive.TAU_MAX, 12);
-
-        // 更新电机数据
-        m->second->receive_data(receive_q, receive_dq, receive_tau);
-        m->second->updateTimeInterval();  // 更新时间间隔
+        return;   // 关键：参数帧处理完直接退出
     }
-}
 
+    // -----------------------------
+    // 3) 正常状态反馈帧：解析位置、速度、力矩
+    // -----------------------------
+    uint16_t q_uint   = (uint16_t(frame->payload[1]) << 8) | frame->payload[2];
+    uint16_t dq_uint  = (uint16_t(frame->payload[3]) << 4) | (frame->payload[4] >> 4);
+    uint16_t tau_uint = (uint16_t(frame->payload[4] & 0x0F) << 8) | frame->payload[5];
+
+    auto limit_param_receive = it->second->get_limit_param();
+
+    float receive_q =
+        uint_to_float(q_uint, -limit_param_receive.Q_MAX, limit_param_receive.Q_MAX, 16);
+    float receive_dq =
+        uint_to_float(dq_uint, -limit_param_receive.DQ_MAX, limit_param_receive.DQ_MAX, 12);
+    float receive_tau =
+        uint_to_float(tau_uint, -limit_param_receive.TAU_MAX, limit_param_receive.TAU_MAX, 12);
+
+    it->second->receive_data(receive_q, receive_dq, receive_tau);
+    it->second->updateTimeInterval();
+}
 std::mutex m_mutex;
 void canframeCallback(usb_rx_frame_t* frame) {
     std::lock_guard<std::mutex> lock(m_mutex);  // 确保线程安全
