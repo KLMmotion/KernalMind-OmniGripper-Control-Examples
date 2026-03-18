@@ -1,6 +1,6 @@
 # OmniGripper Control Examples
 
-本项目为基于 **OmniGripper 夹爪** 的控制例程，旨在为 OmniGripper 提供完整的软件控制支持。项目主要包含以下模块：
+本项目为基于 **OmniGripper 夹爪** 的控制例程，旨在为 OmniGripper 提供软件控制示例支持。项目主要包含以下模块：
 
 ## 项目模块
 
