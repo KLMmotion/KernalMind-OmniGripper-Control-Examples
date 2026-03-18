@@ -26,7 +26,7 @@
 
 
 Python：
-- Python 3.8/3,10
+- Python 3.8/3.10
 
 依赖：
     pip install numpy==1.23.5 matplotlib==3.6.3
