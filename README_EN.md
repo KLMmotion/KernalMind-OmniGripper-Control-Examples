@@ -1,6 +1,6 @@
 # OmniGripper Control Examples
 
-This project provides control examples for the **OmniGripper Gripper**, aiming to offer complete software control support for OmniGripper. The project mainly includes the following modules:
+This project provides control examples for the **OmniGripper Gripper**, aiming to offer software control example support for OmniGripper. The project mainly includes the following modules:
 
 ## Project Modules
 
@@ -21,7 +21,7 @@ Used to control the OmniGripper gripper via USB in C++.
 ---
 
 ### 3. TJFX Robotic Arm Pass-Through Python Example  
-Used to control the OmniGripper gripper through the FuXi robotic arm pass-through in Python.
+Used to control the OmniGripper gripper through the TJFX robotic arm pass-through in Python.
 
 **Directory:**
 `/OmniGripper/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_PYTHON`
@@ -29,7 +29,7 @@ Used to control the OmniGripper gripper through the FuXi robotic arm pass-throug
 ---
 
 ### 4. TJFX Robotic Arm Pass-Through C++ Example  
-Used to control the OmniGripper gripper through the FuXi robotic arm pass-through in C++.
+Used to control the OmniGripper gripper through the TJFX robotic arm pass-through in C++.
 
 **Directory:**
 `/OmniGripper/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_C++`
@@ -50,8 +50,8 @@ This project covers control examples for OmniGripper in different communication 
 The project mainly includes:
 
 - USB-based Python/C++ control examples
-- FuXi robotic arm pass-through-based Python/C++ control examples
-- ROS-based FuXi robotic arm pass-through control package
+- TJFX robotic arm pass-through-based Python/C++ control examples
+- ROS-based TJFX robotic arm pass-through control package
 
 Through these modules, developers can quickly implement basic control of OmniGripper, integrate it with robotic arms, and incorporate it into ROS systems.
 
@@ -63,5 +63,5 @@ This project is suitable for the following scenarios:
 
 - Basic functional debugging of OmniGripper
 - Direct control of the gripper via USB
-- Control of the gripper through FuXi robotic arm pass-through
+- Control of the gripper through TJFX robotic arm pass-through
 - System integration and application development in a ROS environment
