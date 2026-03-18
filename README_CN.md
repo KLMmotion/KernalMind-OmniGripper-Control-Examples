@@ -21,7 +21,7 @@
 ---
 
 ### 3. TJFX 机械臂透传 Python 例程 
-用于通过 FuXi 机械臂透传方式，以 Python 方式对 OmniGripper 夹爪进行控制。
+用于通过 TJFX 机械臂透传方式，以 Python 方式对 OmniGripper 夹爪进行控制。
 
 **目录位置：**
 `/OmniGripper/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_PYTHON`
@@ -29,7 +29,7 @@
 ---
 
 ### 4. TJFX 机械臂透传 C++ 例程
-用于通过 FuXi 机械臂透传方式，以 C++ 方式对 OmniGripper 夹爪进行控制。
+用于通过 TJFX 机械臂透传方式，以 C++ 方式对 OmniGripper 夹爪进行控制。
 
 **目录位置：**
 `/OmniGripper/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_C++`
@@ -37,10 +37,10 @@
 ---
 
 ### 5. TJFX 机械臂透传 ROS 包 
-用于在 ROS 环境下，用遥操手柄通过 FuXi 机械臂透传方式集成和控制 OmniGripper 夹爪。
+用于在 ROS 环境下，用遥操手柄通过 TJFX 机械臂透传方式集成和控制 OmniGripper 夹爪。
 
 **目录位置：**
-`OmniGripper/DMROS_gripper-main/dm_gripper_py`
+`/OmniGripper/DMROS_gripper-main/dm_gripper_py`
 
 
 ---
@@ -51,8 +51,8 @@
 目前项目主要包括：
 
 - 基于 USB 的 Python/C++ 控制例程
-- 基于 FuXi 机械臂透传的 Python/C++ 控制例程
-- 基于 ROS 的 FuXi 机械臂透传控制包
+- 基于 TJFX 机械臂透传的 Python/C++ 控制例程
+- 基于 ROS 的 TJFX 机械臂透传控制包
 
 通过以上模块，开发者可以快速完成 OmniGripper 的基础控制、机械臂集成以及 ROS 系统接入。
 
@@ -64,5 +64,5 @@
 
 - OmniGripper 夹爪基础功能调试
 - 通过 USB 直接控制夹爪
-- 通过 FuXi 机械臂进行夹爪透传控制
+- 通过 TJFX 机械臂进行夹爪透传控制
 - 在 ROS 环境中进行系统集成与应用开发
