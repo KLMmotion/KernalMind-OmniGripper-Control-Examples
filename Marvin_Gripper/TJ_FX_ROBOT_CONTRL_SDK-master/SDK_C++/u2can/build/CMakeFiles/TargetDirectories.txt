@@ -1,4 +1,0 @@
-/home/hanwen/KernalMind-OmniGripper-Control-Examples-main/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_C++/u2can/build/CMakeFiles/test_damiao.dir
-/home/hanwen/KernalMind-OmniGripper-Control-Examples-main/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_C++/u2can/build/CMakeFiles/test_can.dir
-/home/hanwen/KernalMind-OmniGripper-Control-Examples-main/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_C++/u2can/build/CMakeFiles/edit_cache.dir
-/home/hanwen/KernalMind-OmniGripper-Control-Examples-main/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_C++/u2can/build/CMakeFiles/rebuild_cache.dir
