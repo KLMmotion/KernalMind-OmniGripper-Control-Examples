@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test_can.dir/src/eef_can_demo.cpp.o -o test_can   -L/home/lihaoran/桌面/github/KernalMind-OmniGripper-Control-Examples/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_C++/u2can/lib  -Wl,-rpath,/home/lihaoran/桌面/github/KernalMind-OmniGripper-Control-Examples/Marvin_Gripper/TJ_FX_ROBOT_CONTRL_SDK-master/SDK_C++/u2can/lib -lMarvinSDK 
