@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# ROS/colcon generated files
+build/
+install/
+log/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Local editor/system files
+.vscode/
+.idea/
+.DS_Store

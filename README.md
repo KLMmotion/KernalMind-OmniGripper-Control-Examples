@@ -2,8 +2,8 @@
 
 OmniGripper 控制例程
 
-This project provides control examples for the **OmniGripper Gripper**, aimed at offering complete software support for OmniGripper.
-本项目为基于 **OmniGripper 夹爪** 的控制例程，旨在为 OmniGripper 提供完整的软件控制支持。
+This project provides control examples for the **OmniGripper Gripper**, aimed at offering complete software support for OmniGripper. It also includes a ROS2 control example for the **ZY OmniPicker Gripper**.
+本项目为基于 **OmniGripper 夹爪** 的控制例程，旨在为 OmniGripper 提供完整的软件控制支持。同时，项目新增 **智元 OmniPicker 夹爪** ROS2 控制例程。
 
 The project includes the following modules:
 项目主要包含以下模块：
@@ -77,6 +77,19 @@ Integrates and controls the OmniGripper via TJFX Robot Arm passthrough in a ROS 
 
 ---
 
+### 6. ZY OmniPicker ROS2 Example
+
+### 6. 智元 OmniPicker ROS2 例程
+
+Controls the ZY OmniPicker gripper in a ROS2 environment through its CAN protocol, including teleoperation, feedback, and open/close testing.
+用于在 ROS2 环境下，通过智元 OmniPicker 夹爪的 CAN 协议完成遥操控制、状态反馈和开合测试。
+
+**Directory Path:**
+**目录位置：**
+`ZYROS_gripper-main/zy_gripper_py`
+
+---
+
 ## Project Description
 
 ## 项目说明
@@ -99,8 +112,12 @@ Currently, the project includes:
 
 * 基于 ROS 的 TJFX 机械臂透传控制包
 
-With these modules, developers can quickly achieve basic control of the OmniGripper, integrate it with a robotic arm, or integrate it into a ROS system for application development.
-通过以上模块，开发者可以快速完成 OmniGripper 的基础控制、机械臂集成以及 ROS 系统接入。
+* ZY OmniPicker control example for ROS2
+
+* 基于 ROS2 的智元 OmniPicker 控制例程
+
+With these modules, developers can quickly achieve basic control of the OmniGripper, integrate it with a robotic arm, integrate it into a ROS system, or reference the ZY OmniPicker ROS2 example for application development.
+通过以上模块，开发者可以快速完成 OmniGripper 的基础控制、机械臂集成以及 ROS 系统接入，也可以参考智元 OmniPicker ROS2 例程进行应用开发。
 
 ---
 
@@ -126,3 +143,7 @@ This project is suitable for the following scenarios:
 * System integration and application development in ROS environment
 
 * 在 ROS 环境中进行系统集成与应用开发
+
+* ZY OmniPicker integration and debugging in a ROS2 environment
+
+* 在 ROS2 环境中接入和调试智元 OmniPicker 夹爪

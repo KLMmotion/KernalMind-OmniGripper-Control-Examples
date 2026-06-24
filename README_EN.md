@@ -1,6 +1,6 @@
 # OmniGripper Control Examples
 
-This project provides control examples for the **OmniGripper Gripper**, aiming to offer software control example support for OmniGripper. The project mainly includes the following modules:
+This project provides control examples for the **OmniGripper Gripper**, aiming to offer software control example support for OmniGripper. It also includes a ROS2 control example for the **ZY OmniPicker Gripper**, so users can validate and integrate both gripper solutions in one project. The project mainly includes the following modules:
 
 ## Project Modules
 
@@ -44,6 +44,14 @@ Used to control the OmniGripper gripper in a ROS environment with a remote contr
 
 ---
 
+### 6. ZY OmniPicker ROS2 Example
+Used to control the ZY OmniPicker gripper in a ROS2 environment through its CAN protocol, including teleoperation, feedback, and open/close testing.
+
+**Directory:**
+`ZYROS_gripper-main/zy_gripper_py`
+
+---
+
 ## Project Description
 
 This project covers control examples for OmniGripper in different communication methods and development environments, providing developers with various options for secondary development and integration.  
@@ -52,8 +60,9 @@ The project mainly includes:
 - USB-based Python/C++ control examples
 - TJFX robotic arm pass-through-based Python/C++ control examples
 - ROS-based TJFX robotic arm pass-through control package
+- ROS2-based ZY OmniPicker control example
 
-Through these modules, developers can quickly implement basic control of OmniGripper, integrate it with robotic arms, and incorporate it into ROS systems.
+Through these modules, developers can quickly implement basic control of OmniGripper, integrate it with robotic arms, incorporate it into ROS systems, and reference the ZY OmniPicker ROS2 example for secondary development.
 
 ---
 
@@ -65,3 +74,4 @@ This project is suitable for the following scenarios:
 - Direct control of the gripper via USB
 - Control of the gripper through TJFX robotic arm pass-through
 - System integration and application development in a ROS environment
+- ZY OmniPicker integration and debugging in a ROS2 environment
