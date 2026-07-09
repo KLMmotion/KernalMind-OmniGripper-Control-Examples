@@ -135,8 +135,8 @@ class OmniGripperNode(Node):
         d_ratio = np.clip(dec_cmd / 100.0, 0.0, 1.0)
         f_ratio = np.clip(i_des / 10000.0, 0.0, 1.0)
 
-        ZYCtrl.control_gripper(Motor1, self.q1, v_ratio, f_ratio, a_ratio, d_ratio)
-        ZYCtrl.control_gripper(Motor2, self.q2, v_ratio, f_ratio, a_ratio, d_ratio)
+        ZYCtrl.control_gripper(Motor1, 1.0-self.q1, v_ratio, f_ratio, a_ratio, d_ratio)
+        ZYCtrl.control_gripper(Motor2, 1.0-self.q2, v_ratio, f_ratio, a_ratio, d_ratio)
         ZYCtrl.recv()
 
         # 左夹爪话题发布
