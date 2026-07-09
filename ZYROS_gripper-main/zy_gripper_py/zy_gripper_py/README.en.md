@@ -38,10 +38,9 @@ ros2 topic pub --once /control/gripperValueL std_msgs/msg/Float32 "{data: 1.0}"
 ros2 topic pub --once /control/gripperValueR std_msgs/msg/Float32 "{data: 1.0}"
 ```
 
-Command range:
+Command range: `0.0` to `1.0`.
 
-- `0.0`: closed
-- `1.0`: open
+Before sending the ZY gripper CAN command, the node maps the outgoing position as `1.0 - input_value`. For this reason, this README does not bind `0.0` / `1.0` to open or closed. Verify the actual direction with the gripper installation and field calibration.
 
 ## Run Open/Close Test
 
@@ -58,7 +57,7 @@ source install/setup.bash
 ros2 run zy_gripper_py zy_gripper_auto_test
 ```
 
-The test node publishes alternating `1.0` and `0.0` commands to `/control/gripperValueL` and `/control/gripperValueR`. It does not access CAN directly.
+The test node publishes alternating endpoint commands to `/control/gripperValueL` and `/control/gripperValueR`. It does not access CAN directly.
 
 Adjust test parameters:
 
@@ -68,6 +67,8 @@ ros2 run zy_gripper_py zy_gripper_auto_test --ros-args \
   -p open_position:=1.0 \
   -p close_position:=0.0
 ```
+
+If the actual open/close direction is reversed in the field, swap the values of `open_position` and `close_position`.
 
 ## ROS2 Interface
 

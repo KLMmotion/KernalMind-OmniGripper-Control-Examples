@@ -57,11 +57,9 @@ ros2 run zy_gripper_py zy_gripper_node
 /control/gripperValueR
 ```
 
-发布值范围为 `0.0` 到 `1.0`：
+发布值范围为 `0.0` 到 `1.0`，超出范围的输入会在节点内被限制到 `0.0` 到 `1.0`。
 
-- `0.0` 表示闭合。
-- `1.0` 表示张开。
-- 超出范围的输入会在节点内被限制到 `0.0` 到 `1.0`。
+当前节点在下发智元夹爪 CAN 指令前会执行 `1.0 - 输入值` 的方向映射，因此本文档不固定声明 `0.0` / `1.0` 与张开、闭合的对应关系。实际方向请以夹爪安装方式和现场标定结果为准。
 
 手动发布测试：
 
@@ -85,7 +83,7 @@ source install/setup.bash
 ros2 run zy_gripper_py zy_gripper_auto_test
 ```
 
-测试发布器会周期性向左右夹爪发布 `1.0` 和 `0.0`，用于验证通信链路和夹爪动作。它不直接控制 CAN，只通过标准遥操话题工作。
+测试发布器会周期性向左右夹爪发布两个端点值，用于验证通信链路和夹爪动作。它不直接控制 CAN，只通过标准遥操话题工作。
 
 可调整测试周期和位置：
 
@@ -95,6 +93,8 @@ ros2 run zy_gripper_py zy_gripper_auto_test --ros-args \
   -p open_position:=1.0 \
   -p close_position:=0.0
 ```
+
+如果现场测试发现开合方向与预期相反，可交换 `open_position` 和 `close_position` 的取值。
 
 ## ROS2 接口
 
